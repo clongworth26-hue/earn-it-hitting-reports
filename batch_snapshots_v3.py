@@ -91,7 +91,10 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
     monthly_factor = 1.0 + (MONTHLY_IMPROVEMENT_PCT / 100.0)
     
     # Goal card uses PEAK EV (Chad's preference)
-    goal_peak = round(peak_ev * (monthly_factor ** 2), 1)
+    # 2-month and 6-month projections
+    goal_peak_2mo = round(peak_ev * (monthly_factor ** 2), 1)
+    goal_peak_6mo = round(peak_ev * (monthly_factor ** 6), 1)
+    goal_peak = goal_peak_2mo
     # Avg EV goal (for metric card)
     goal_ev_avg = round(avg_ev * monthly_factor, 1)
     goal_dist = round(avg_dist * monthly_factor, 1)
@@ -153,12 +156,12 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
     
     # ── Progress section: Monthly Goal Highlight ──
     # Use PEAK EV for the goal card (Chad's preference)
-    peak_pct = min(peak_ev / max(goal_peak, 1) * 100, 100)
+    peak_pct = min(peak_ev / max(goal_peak_6mo, 1) * 100, 100)
     progress_card = f"""
 <div class="goal_card">
 <div class="goal_icon">🎯</div>
-<div class="goal_main">Monthly Goal: <strong>{goal_peak} mph</strong> peak exit velo</div>
-<div class="goal_sub">{peak_ev} mph now → {goal_peak} mph in 2 months (at {MONTHLY_IMPROVEMENT_PCT}% monthly gain)</div>
+<div class="goal_main">Monthly Goal: <strong>{goal_peak_2mo} mph</strong> peak exit velo</div>
+<div class="goal_sub">{peak_ev} mph now → {goal_peak_2mo} mph in 2 months · {goal_peak_6mo} mph in 6 months (at {MONTHLY_IMPROVEMENT_PCT}%/mo)</div>
 <div class="goal_bar"><div class="goal_fill" style="width:{peak_pct:.0f}%"></div></div>
 <div class="goal_milestones">
   <span class="gm {('active' if peak_ev >= b_val else '')}">{b_val}</span>
@@ -166,6 +169,20 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
   <span class="gm {('active' if peak_ev >= e_val else '')}">{e_val}</span>
   <span class="gm_label">Age group reference · {ag}</span>
 </div>
+</div>"""
+
+    # ── 6-Month Benchmark Projection Card ──
+    bm_6mo_card = f"""
+<div class="sixmo_card">
+<div class="sixmo_icon">📈</div>
+<div class="sixmo_main">6-Month Projection</div>
+<table class="sixmo_tbl">
+  <tr><th></th><th>Now</th><th>6-Mo Goal</th><th>Gain</th></tr>
+  <tr><td>Peak EV</td><td>{peak_ev} mph</td><td>{goal_peak_6mo} mph</td><td class="gain">+{round(goal_peak_6mo - peak_ev, 1)} mph</td></tr>
+  <tr><td>Avg EV</td><td>{avg_ev} mph</td><td>{round(avg_ev * (monthly_factor ** 6), 1)} mph</td><td class="gain">+{round(avg_ev * (monthly_factor ** 6) - avg_ev, 1)} mph</td></tr>
+  <tr><td>Avg Dist</td><td>{avg_dist} ft</td><td>{round(avg_dist * (monthly_factor ** 6), 1)} ft</td><td class="gain">+{round(avg_dist * (monthly_factor ** 6) - avg_dist, 1)} ft</td></tr>
+</table>
+<div class="sixmo_note">At {MONTHLY_IMPROVEMENT_PCT}% monthly growth — consistent training at The Cage</div>
 </div>"""
     
     # ── Percentile Rankings (just numbers, no labels) ──
@@ -202,6 +219,16 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 .goal_icon{{font-size:28px;margin-bottom:6px;}}.goal_main{{font-size:16px;font-weight:700;margin-bottom:4px;}}.goal_sub{{font-size:11px;color:{M};margin-bottom:10px;}}
 .goal_bar{{height:6px;background:{MG};border-radius:3px;margin-bottom:10px;max-width:280px;margin-left:auto;margin-right:auto;}}.goal_fill{{height:100%;background:{GREEN};border-radius:3px;}}
 .goal_milestones{{display:flex;justify-content:center;gap:8px;align-items:center;font-size:11px;}}.gm{{display:inline-block;padding:2px 10px;border-radius:10px;background:{MG};color:{M};font-weight:600;}}.gm.active{{background:{LG};color:{W};}}.gm_label{{color:{M};opacity:0.4;font-size:9px;margin-left:4px;}}
+.sixmo_card{{background:{CARD};border-radius:12px;padding:14px 16px;border:1px solid {MG};margin-bottom:10px;}}
+.sixmo_icon{{font-size:24px;text-align:center;margin-bottom:6px;}}
+.sixmo_main{{font-size:14px;font-weight:700;text-align:center;margin-bottom:8px;}}
+.sixmo_tbl{{width:100%;border-collapse:collapse;font-size:12px;}}
+.sixmo_tbl th{{color:{M};opacity:0.6;font-weight:600;text-align:right;padding:4px 6px;border-bottom:1px solid {MG};}}
+.sixmo_tbl th:first-child{{text-align:left;}}
+.sixmo_tbl td{{text-align:right;padding:5px 6px;border-bottom:1px solid {MG};}}
+.sixmo_tbl td:first-child{{text-align:left;font-weight:600;color:{M};}}
+.sixmo_tbl .gain{{color:{GREEN};font-weight:700;}}
+.sixmo_note{{font-size:9px;color:{M};opacity:0.5;text-align:center;margin-top:8px;}}
 .pct{{background:{CARD};border-radius:10px;padding:12px;border:1px solid {MG};}}.pr{{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid {MG};font-size:13px;}}.pr:last-child{{border:none;}}
 .pr_lbl{{width:80px;font-weight:600;font-size:12px;}}.pr_bar{{flex:1;height:8px;background:{MG};border-radius:4px;}}.pr_fill{{height:100%;background:{W};border-radius:4px;}}.pr_val{{width:36px;text-align:right;font-weight:700;font-size:14px;}}
 .recs{{background:{CARD};border-radius:10px;padding:12px 12px 12px 28px;border:1px solid {MG};}}.recs li{{font-size:12px;line-height:1.6;margin-bottom:6px;color:{M};}}.recs li::marker{{color:{W};}}
@@ -210,6 +237,7 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 <div class="hdr"><div class="l"><img src="{cage_b64}" alt="The Cage"><img src="{logo_b64}" alt="Earn It Academy"></div><h1>Hitting Snapshot</h1><div class="sub">Earn It Academy · The Cage</div></div>
 <div class="pn"><h2>{display_name}</h2><div class="dt">{cage_age} years old · {ag} · Last: {last_sesh}</div><div class="bd">{sess} sessions · {hits} batted balls</div></div>
 {progress_card}
+{bm_6mo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
 <div class="sec"><div class="st">Coach's Notes</div><div class="recs"><ol>{recs_list}</ol></div></div>
@@ -249,6 +277,6 @@ for g in generated:
     r = subprocess.run(["scp", "-o", "ConnectTimeout=5", src, f"linux2:{LINUX2_DIR}{fname}"], capture_output=True, text=True, timeout=10)
     print(f"  {'✅' if r.returncode==0 else '❌'} {fname}")
 
-print(f"\n✅ All 8 reports rebuilt with progress-first approach!")
+print(f"\n✅ All {len(generated)} reports rebuilt with progress-first approach!")
 print(f"📁 Local: {OUT_DIR}/")
 print(f"🌐 Web: http://linux2:8080/")
