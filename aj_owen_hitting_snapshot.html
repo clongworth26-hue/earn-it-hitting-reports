@@ -22,6 +22,9 @@
 .sixmo_tbl td{text-align:right;padding:5px 6px;border-bottom:1px solid #222222;}
 .sixmo_tbl td:first-child{text-align:left;font-weight:600;color:#888888;}
 .sixmo_tbl .gain{color:#00C853;font-weight:700;}
+.sixmo_tbl .ga{color:#00C853;font-weight:700;}
+.sixmo_tbl .rd{color:#FF5252;font-weight:700;}
+.sixmo_sub{font-size:10px;text-align:center;color:#888888;opacity:0.6;margin-bottom:8px;}
 .sixmo_note{font-size:9px;color:#888888;opacity:0.5;text-align:center;margin-top:8px;}
 .pct{background:#111111;border-radius:10px;padding:12px;border:1px solid #222222;}.pr{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #222222;font-size:13px;}.pr:last-child{border:none;}
 .pr_lbl{width:80px;font-weight:600;font-size:12px;}.pr_bar{flex:1;height:8px;background:#222222;border-radius:4px;}.pr_fill{height:100%;background:#FFFFFF;border-radius:4px;}.pr_val{width:36px;text-align:right;font-weight:700;font-size:14px;}
@@ -34,7 +37,7 @@
 <div class="goal_card">
 <div class="goal_icon">🎯</div>
 <div class="goal_main">Monthly Goal: <strong>79.8 mph</strong> peak exit velo</div>
-<div class="goal_sub">77.5 mph now → 79.8 mph in 2 months · 84.7 mph in 6 months (at 1.5%/mo)</div>
+<div class="goal_sub">77.5 mph now → 79.8 mph in 2 months (at 1.5%/mo)</div>
 <div class="goal_bar"><div class="goal_fill" style="width:91%"></div></div>
 <div class="goal_milestones">
   <span class="gm active">44</span>
@@ -46,14 +49,15 @@
 
 <div class="sixmo_card">
 <div class="sixmo_icon">📈</div>
-<div class="sixmo_main">6-Month Projection</div>
+<div class="sixmo_main">6-Month Improvement</div>
+<div class="sixmo_sub">Average of last 4 sessions vs 4 sessions ~6 months ago</div>
 <table class="sixmo_tbl">
-  <tr><th></th><th>Now</th><th>6-Mo Goal</th><th>Gain</th></tr>
-  <tr><td>Peak EV</td><td>77.5 mph</td><td>84.7 mph</td><td class="gain">+7.2 mph</td></tr>
-  <tr><td>Avg EV</td><td>50.1 mph</td><td>54.8 mph</td><td class="gain">+4.7 mph</td></tr>
-  <tr><td>Avg Dist</td><td>97.0 ft</td><td>106.1 ft</td><td class="gain">+9.1 ft</td></tr>
+  <tr><th></th><th>6 Months Ago</th><th>Now</th><th>Change</th></tr>
+  <tr><td>Peak EV</td><td>61.7 mph</td><td>70.7 mph</td><td class="ga">+9.0 mph</td></tr>
+  <tr><td>Avg EV</td><td>51.8 mph</td><td>58.3 mph</td><td class="ga">+6.5 mph</td></tr>
+  <tr><td>Avg Dist</td><td>139.2 ft</td><td>185.8 ft</td><td class="ga">+46.6 ft</td></tr>
 </table>
-<div class="sixmo_note">At 1.5% monthly growth — consistent training at The Cage</div>
+<div class="sixmo_note">Real improvement — not projected. Based on actual Cage session data.</div>
 </div>
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg"><div class="mc"><div class="mc_top"><span class="mc_lbl">Avg Exit Vel.</span><span class="mc_unit">mph</span></div>
 <div class="mc_vals"><div class="mc_v"><span class="mc_num">50.1</span></div><div class="mc_v tgt"><span class="mc_num">50.9</span><span class="mc_sub">Goal</span></div></div>

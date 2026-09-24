@@ -17,6 +17,42 @@ LINUX2_DIR = "/home/chadlongworth/cage-schedule/"
 
 MONTHLY_IMPROVEMENT_PCT = 1.5  # 1.5% per month (middle of 1-2% range)
 
+# ── Six-month comparison: avg of last 4 sessions vs avg of 4 sessions ~6 months ago ──
+six_month_now = {
+    41033: (55.1, 46.1, 137.4),
+    41048: (70.7, 58.3, 185.8),
+    41051: (74.6, 65.0, 232.7),
+    41075: (63.2, 52.5, 180.3),
+    41076: (43.5, 38.9, 88.4),
+    41083: (72.0, 59.1, 166.9),
+    41101: (53.1, 43.9, 110.4),
+    41102: (55.7, 48.8, 134.9),
+    41110: (41.6, 33.3, 55.0),
+    41139: (41.7, 36.1, 86.1),
+    41144: (57.5, 45.0, 139.9),
+    41162: (55.0, 48.7, 138.2),
+    41179: (55.7, 44.4, 111.1),
+    41180: (51.9, 45.6, 120.2),
+    41188: (56.9, 45.4, 125.9),
+}
+six_month_ago = {
+    41033: (50.1, 42.5, 106.5),
+    41048: (61.7, 51.8, 139.2),
+    41051: (71.5, 64.9, 215.1),
+    41075: (62.5, 51.8, 147.8),
+    41076: (41.6, 35.7, 85.2),
+    41083: (72.7, 60.0, 198.4),
+    41101: (49.2, 39.1, 99.1),
+    41102: (52.3, 46.2, 122.9),
+    41110: (41.2, 33.8, 59.3),
+    41139: (41.8, 34.9, 79.8),
+    41144: (46.5, 36.1, 85.0),
+    41162: (51.7, 43.3, 117.9),
+    41179: (59.6, 44.1, 112.6),
+    41180: (46.0, 38.2, 91.1),
+    41188: (0.0, 0.0, 0.0),
+}
+
 def img_b64(p):
     if not os.path.exists(p): return ""
     with open(p,"rb") as f: return f"data:image/png;base64,{base64.b64encode(f.read()).decode()}"
@@ -161,7 +197,7 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 <div class="goal_card">
 <div class="goal_icon">🎯</div>
 <div class="goal_main">Monthly Goal: <strong>{goal_peak_2mo} mph</strong> peak exit velo</div>
-<div class="goal_sub">{peak_ev} mph now → {goal_peak_2mo} mph in 2 months · {goal_peak_6mo} mph in 6 months (at {MONTHLY_IMPROVEMENT_PCT}%/mo)</div>
+<div class="goal_sub">{peak_ev} mph now → {goal_peak_2mo} mph in 2 months (at {MONTHLY_IMPROVEMENT_PCT}%/mo)</div>
 <div class="goal_bar"><div class="goal_fill" style="width:{peak_pct:.0f}%"></div></div>
 <div class="goal_milestones">
   <span class="gm {('active' if peak_ev >= b_val else '')}">{b_val}</span>
@@ -171,19 +207,38 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 </div>
 </div>"""
 
-    # ── 6-Month Benchmark Projection Card ──
-    bm_6mo_card = f"""
+    # ── Six-Month Comparison Card (Now vs 6 Months Ago) ──
+    now_6 = six_month_now.get(uid, (0,0,0))
+    ago_6 = six_month_ago.get(uid, (0,0,0))
+    has_6mo = ago_6[0] > 0
+    
+    if has_6mo:
+        peak_ev_now, avg_ev_now, dist_now = now_6
+        peak_ev_ago, avg_ev_ago, dist_ago = ago_6
+        peak_diff = peak_ev_now - peak_ev_ago
+        avg_diff = avg_ev_now - avg_ev_ago
+        dist_diff = dist_now - dist_ago
+        arrow_peak = "ga" if peak_diff >= 0 else "rd"
+        arrow_avg = "ga" if avg_diff >= 0 else "rd"
+        arrow_dist = "ga" if dist_diff >= 0 else "rd"
+        sixmo_card = f"""
 <div class="sixmo_card">
 <div class="sixmo_icon">📈</div>
-<div class="sixmo_main">6-Month Projection</div>
+<div class="sixmo_main">6-Month Improvement</div>
+<div class="sixmo_sub">Average of last 4 sessions vs 4 sessions ~6 months ago</div>
 <table class="sixmo_tbl">
-  <tr><th></th><th>Now</th><th>6-Mo Goal</th><th>Gain</th></tr>
-  <tr><td>Peak EV</td><td>{peak_ev} mph</td><td>{goal_peak_6mo} mph</td><td class="gain">+{round(goal_peak_6mo - peak_ev, 1)} mph</td></tr>
-  <tr><td>Avg EV</td><td>{avg_ev} mph</td><td>{round(avg_ev * (monthly_factor ** 6), 1)} mph</td><td class="gain">+{round(avg_ev * (monthly_factor ** 6) - avg_ev, 1)} mph</td></tr>
-  <tr><td>Avg Dist</td><td>{avg_dist} ft</td><td>{round(avg_dist * (monthly_factor ** 6), 1)} ft</td><td class="gain">+{round(avg_dist * (monthly_factor ** 6) - avg_dist, 1)} ft</td></tr>
+  <tr><th></th><th>6 Months Ago</th><th>Now</th><th>Change</th></tr>
+  <tr><td>Peak EV</td><td>{peak_ev_ago} mph</td><td>{peak_ev_now} mph</td><td class="{arrow_peak}">{('+' if peak_diff >= 0 else '')}{peak_diff:.1f} mph</td></tr>
+  <tr><td>Avg EV</td><td>{avg_ev_ago} mph</td><td>{avg_ev_now} mph</td><td class="{arrow_avg}">{('+' if avg_diff >= 0 else '')}{avg_diff:.1f} mph</td></tr>
+  <tr><td>Avg Dist</td><td>{dist_ago} ft</td><td>{dist_now} ft</td><td class="{arrow_dist}">{('+' if dist_diff >= 0 else '')}{dist_diff:.1f} ft</td></tr>
 </table>
-<div class="sixmo_note">At {MONTHLY_IMPROVEMENT_PCT}% monthly growth — consistent training at The Cage</div>
+<div class="sixmo_note">Real improvement — not projected. Based on actual Cage session data.</div>
 </div>"""
+    else:
+        sixmo_card = ""
+        
+    # Remove the old 6-month goal projection references from goal card
+    goal_peak_6mo = round(peak_ev * (monthly_factor ** 6), 1)
     
     # ── Percentile Rankings (just numbers, no labels) ──
     # Compute simple position relative to benchmarks
@@ -228,6 +283,9 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 .sixmo_tbl td{{text-align:right;padding:5px 6px;border-bottom:1px solid {MG};}}
 .sixmo_tbl td:first-child{{text-align:left;font-weight:600;color:{M};}}
 .sixmo_tbl .gain{{color:{GREEN};font-weight:700;}}
+.sixmo_tbl .ga{{color:{GREEN};font-weight:700;}}
+.sixmo_tbl .rd{{color:#FF5252;font-weight:700;}}
+.sixmo_sub{{font-size:10px;text-align:center;color:{M};opacity:0.6;margin-bottom:8px;}}
 .sixmo_note{{font-size:9px;color:{M};opacity:0.5;text-align:center;margin-top:8px;}}
 .pct{{background:{CARD};border-radius:10px;padding:12px;border:1px solid {MG};}}.pr{{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid {MG};font-size:13px;}}.pr:last-child{{border:none;}}
 .pr_lbl{{width:80px;font-weight:600;font-size:12px;}}.pr_bar{{flex:1;height:8px;background:{MG};border-radius:4px;}}.pr_fill{{height:100%;background:{W};border-radius:4px;}}.pr_val{{width:36px;text-align:right;font-weight:700;font-size:14px;}}
@@ -237,7 +295,7 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 <div class="hdr"><div class="l"><img src="{cage_b64}" alt="The Cage"><img src="{logo_b64}" alt="Earn It Academy"></div><h1>Hitting Snapshot</h1><div class="sub">Earn It Academy · The Cage</div></div>
 <div class="pn"><h2>{display_name}</h2><div class="dt">{cage_age} years old · {ag} · Last: {last_sesh}</div><div class="bd">{sess} sessions · {hits} batted balls</div></div>
 {progress_card}
-{bm_6mo_card}
+{sixmo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
 <div class="sec"><div class="st">Coach's Notes</div><div class="recs"><ol>{recs_list}</ol></div></div>
