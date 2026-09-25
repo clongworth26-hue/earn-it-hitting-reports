@@ -154,10 +154,14 @@ for uid, (slug, disp) in sorted(ROSTER.items()):
     # strip any previously embedded chart sections (idempotent re-run)
     if '<div class="sec"><div class="st">Monthly Progress</div>' in html:
         start = html.find('<div class="sec"><div class="st">Monthly Progress</div>')
-        end = html.find('<div class="ft">')
+        end = html.find('<div class="ftr">')
+        if end == -1:
+            end = html.find('<div class="ft">')
         if start != -1 and end != -1 and start < end:
             html = html[:start] + html[end:]
-    idx = html.find('<div class="ft">')
+    idx = html.find('<div class="ftr">')
+    if idx < 0:
+        idx = html.find('<div class="ft">')
     if idx < 0:
         skipped.append((slug, 'no footer'))
         continue
