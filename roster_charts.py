@@ -10,6 +10,7 @@ BASE = '/tmp/earn-it-hitting-reports'
 
 # uid -> (slug, display name)
 ROSTER = {
+    41065: ('chase_jordan', 'Chase Jordan'),
     20752: ('marshall_longworth', 'Marshall Longworth'),
     22908: ('rowan_giles', 'Rowan Giles'),
     38010: ('ben_bryne', 'Ben Byrne'),

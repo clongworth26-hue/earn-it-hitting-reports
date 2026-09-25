@@ -70,6 +70,8 @@ six_month_ago = {
     41188: (0.0, 0.0, 0.0),
     41194: (0.0, 0.0, 0.0),
     41197: (0.0, 0.0, 0.0),
+    41065: (35.7, 28.6, 27.6),
+    41065: (38.2, 31.0, 37.1),
 }
 
 
@@ -357,11 +359,11 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
     print(f"  {display_name:25s} | {ag:3s} | Peak {peak_ev:5.1f} → Goal {goal_peak:5.1f} mph | {cage_age}yo | {sess:3d} sessions | Barrel {barrel_pct}%")
 
 # Upload to linux2
-print("\nUploading to linux2...")
+# print("\nUploading to linux2...")
 for g in generated:
     fname = f"{g['file']}.html"
     src = os.path.join(OUT_DIR, fname)
-    r = subprocess.run(["scp", "-o", "ConnectTimeout=5", src, f"linux2:{LINUX2_DIR}{fname}"], capture_output=True, text=True, timeout=10)
+#     r = subprocess.run(["scp", "-o", "ConnectTimeout=5", src, f"linux2:{LINUX2_DIR}{fname}"], capture_output=True, text=True, timeout=10)
     print(f"  {'✅' if r.returncode==0 else '❌'} {fname}")
 
 print(f"\n✅ All {len(generated)} reports rebuilt with progress-first approach!")
