@@ -5,8 +5,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import base64, csv, io, os, sys
 
-DATA = '/home/chadlongworth/cage-schedule/monthly_data.csv'
-BASE = '/home/chadlongworth/cage-schedule'
+DATA = '/tmp/earn-it-hitting-reports/monthly_data.csv'
+BASE = '/tmp/earn-it-hitting-reports'
 
 # uid -> (slug, display name)
 ROSTER = {
@@ -16,23 +16,35 @@ ROSTER = {
     41033: ('bennett_baker', 'Bennett Baker'),
     41048: ('aj_owen', 'AJ Owen'),
     41051: ('mason_bullock', 'Mason Bullock'),
+    41057: ('peyton_hiatt', 'Peyton Hiatt'),
+    41067: ('joseph_hileman', 'Joseph Hileman'),
+    41072: ('easton_brooks', 'Easton Brooks'),
     41075: ('ezra_whitted', 'Ezra Whitted'),
     41076: ('greyson_davidson', 'Greyson Davidson'),
     41083: ('aymes_deel', 'Aymes Deel'),
+    41098: ('easton_elam', 'Easton Elam'),
     41101: ('mcquade_niece', 'McQuade Niece'),
     41102: ('irby_stewart', 'Irby Stewart'),
+    41104: ('zeke_whitted', 'Zeke Whitted'),
+    41105: ('asher_scott', 'Asher Scott'),
     41110: ('frankie_sullins', 'Frankie Sullins'),
     41116: ('jameson_smith', 'Jameson Smith'),
+    41118: ('will_meade', 'Will Meade'),
     41123: ('paxton_wilson', 'Paxton Wilson'),
     41139: ('jake_wallencat', 'Jake Wallencat'),
     41144: ('harmon_grieb', 'Harmon Grieb'),
     41146: ('deklan_thompson', 'Deklan Thompson'),
+    41147: ('axl_deel', 'Axl Deel'),
     41162: ('jackson_landis', 'Jackson Landis'),
+    41167: ('bentley_thacker', 'Bentley Thacker'),
     41179: ('wesley_perry', 'Wesley Perry'),
     41180: ('tripp_stanley', 'Tripp Stanley'),
+    41183: ('jude_burrow', 'Jude Burrow'),
     41185: ('gunner_ison', 'Gunner Ison'),
     41188: ('eli_pate', 'Eli Pate'),
+    41190: ('eliza_stewart', 'Eliza Stewart'),
     41197: ('arley_knapp', 'Arley Knapp'),
+    41198: ('sutton_campbell', 'Sutton Campbell'),
 }
 
 BG = '#000008'; PLOT_BG = '#0d0d10'; TXT = '#aaaaaa'
@@ -119,10 +131,10 @@ for uid, (slug, disp) in sorted(ROSTER.items()):
         continue
     rows = by_uid.get(uid, [])
     if len(rows) < 2:
-        skipped.append((slug, 'insufficient data'))
+        skipped.append((slug, f'insufficient data ({len(rows)} months)'))
         continue
     rows.sort(key=lambda r: r['ym'])
-    rows = rows[-24:]  # last 24 months (matches approved chart window)
+    rows = rows[-24:]  # last 24 months
     months = [r['ym'] for r in rows]
     maxev = [r['max'] for r in rows]
     avgev = [r['avg'] for r in rows]
@@ -139,8 +151,7 @@ for uid, (slug, disp) in sorted(ROSTER.items()):
 '''
     html = open(path).read()
     # strip any previously embedded chart sections (idempotent re-run)
-    if 'Monthly Progress' in html and 'id="charts"' not in html:
-        # remove prior insert (from old embed) by cutting between Coach's Notes and footer re-insert
+    if '<div class="sec"><div class="st">Monthly Progress</div>' in html:
         start = html.find('<div class="sec"><div class="st">Monthly Progress</div>')
         end = html.find('<div class="ft">')
         if start != -1 and end != -1 and start < end:
