@@ -14,6 +14,7 @@ ROSTER = {
     22908: ('rowan_giles', 'Rowan Giles'),
     38010: ('ben_bryne', 'Ben Byrne'),
     41033: ('bennett_baker', 'Bennett Baker'),
+    41187: ('cooper_carlson', 'Cooper Carlson'),
     41048: ('aj_owen', 'AJ Owen'),
     41051: ('mason_bullock', 'Mason Bullock'),
     41075: ('ezra_whitted', 'Ezra Whitted'),

@@ -11,7 +11,7 @@ MPS_TO_MPH = 2.23694
 METERS_TO_FEET = 3.28084
 LOGO = "/Users/cl/.openclaw/workspace/vee/branding/EARNITTRANSPARENTWHITE.png"
 CAGE = "/Users/cl/.openclaw/workspace/vee/branding/The Cage Logo Digital.png"
-OUT_DIR = "/Users/cl/.openclaw/workspace/zona/reports"
+OUT_DIR = "/Users/cl/.openclaw/workspace/earn-it-hitting-reports"
 MEDIA_DIR = "/Users/cl/.openclaw/media/outbound"
 LINUX2_DIR = "/home/chadlongworth/cage-schedule/"
 
@@ -95,6 +95,7 @@ BENCHMARKS = {
 players_raw = [
     (41033, "Bennett", "Baker", 8, 148, 27.821, 18.769, 22.001, 27.812, 47.322, 1669, "2026-09-24"),
     (41076, "Greyson", "Davidson", 8, 118, 26.206, 14.95, 15.38, 16.46, 47.369, 1095, "2026-09-24"),
+    (41187, "Cooper", "Carlson", 9, 16, 24.218, 16.742, -2.700, 8.932, 28.007, 83, "2026-09-22"),
     (41083, "Aymes", "Deel", 12, 77, 34.373, 25.403, 1.07, 21.296, 68.294, 1082, "2026-09-24"),
     (41101, "McQuade", "Niece", 8, 128, 29.66, 17.855, 18.705, 24.123, 62.663, 1528, "2026-09-24"),
     (41102, "Irby", "Stewart", 8, 107, 26.421, 18.864, 19.76, 26.828, 47.852, 1079, "2026-09-24"),
@@ -322,12 +323,16 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 .pr_lbl{{width:80px;font-weight:600;font-size:12px;}}.pr_bar{{flex:1;height:8px;background:{MG};border-radius:4px;}}.pr_fill{{height:100%;background:{W};border-radius:4px;}}.pr_val{{width:36px;text-align:right;font-weight:700;font-size:14px;}}
 .recs{{background:{CARD};border-radius:10px;padding:12px 12px 12px 28px;border:1px solid {MG};}}.recs li{{font-size:12px;line-height:1.6;margin-bottom:6px;color:{M};}}.recs li::marker{{color:{W};}}
 .ft{{text-align:center;padding:18px 14px;font-size:9px;color:{M};opacity:0.4;letter-spacing:.5px;}}
+.lava-sep{{position:relative;height:8px;margin:0 12px 8px;overflow:visible;}}
+.lava-glow{{position:absolute;top:-22px;left:-20%;right:-20%;height:60px;border-radius:50%;background:radial-gradient(ellipse at 50% 100%,rgba(255,70,0,0.10) 0%,rgba(255,150,0,0.05) 30%,rgba(255,70,0,0.02) 60%,transparent 80%);animation:lavaPulse 4s ease-in-out infinite;pointer-events:none;}}
+@keyframes lavaPulse{{0%,100%{{opacity:0.3;transform:scaleY(0.8);}}50%{{opacity:0.8;transform:scaleY(1.2);}}}}
 </style></head><body>
 <div class="hdr"><div class="l"><img src="{cage_b64}" alt="The Cage"><img src="{logo_b64}" alt="Earn It Academy"></div><h1>Hitting Snapshot</h1><div class="sub">Earn It Academy · The Cage</div></div>
 <div class="pn"><h2>{display_name}</h2><div class="dt">{cage_age} years old · {ag} · Last: {last_sesh}</div><div class="bd">{sess} sessions · {hits} batted balls</div></div>
 {progress_card}
 {sixmo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
+<div class="lava-sep"><div class="lava-glow"></div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
 <div class="sec"><div class="st">Coach's Notes</div><div class="recs"><ol>{recs_list}</ol></div></div>
 <div class="ft">Earn It Academy · The Cage · Personal progress goals ({MONTHLY_IMPROVEMENT_PCT}% monthly) · {datetime.now().strftime('%b %d, %Y')}</div>
@@ -360,12 +365,6 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 
 # Upload to linux2
 # print("\nUploading to linux2...")
-for g in generated:
-    fname = f"{g['file']}.html"
-    src = os.path.join(OUT_DIR, fname)
-#     r = subprocess.run(["scp", "-o", "ConnectTimeout=5", src, f"linux2:{LINUX2_DIR}{fname}"], capture_output=True, text=True, timeout=10)
-    print(f"  {'✅' if r.returncode==0 else '❌'} {fname}")
-
 print(f"\n✅ All {len(generated)} reports rebuilt with progress-first approach!")
 print(f"📁 Local: {OUT_DIR}/")
 print(f"🌐 Web: http://linux2:8080/")
