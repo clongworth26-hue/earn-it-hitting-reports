@@ -356,8 +356,18 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 {progress_card}
 {sixmo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
-<div class="pba-card"><div class="pba-icon">&#x1F3AF;</div><div class="pba-main">Protected Batting Average (pBA)</div><div class="pba-row"><span class="pba-lbl">pBA (avg contact)</span><span class="pba-val">{pba_score:.3f}</span></div><div class="pba-row pba-sub"><span class="pba-lbl">Max potential (peak EV)</span><span class="pba-val">{pba_max_score:.3f}</span></div><div class="pba-row pba-sub"><span class="pba-lbl">Avg EV to MLB-equivalent</span><span class="pba-val">{avg_ev} mph &rarr; {pba_scaled_avg:.0f} mph</span></div><div class="pba-row pba-sub"><span class="pba-lbl">{ag} level avg exit velo</span><span class="pba-val">{pba_l_avg} mph</span></div><div class="pba-desc">Unlike regular batting average (which depends on fielders and luck), pBA measures only what you control - exit velocity and contact quality. It shows the expected hit rate if this contact quality were transferred to the MLB level.</div></div>
-<div class="lava-sep"><div class="lava-glow"></div></div>
+<div class=pba_card>
+<div class=pba_icon>&#x1F3AF;</div>
+<div class=pba_score>
+<span class=pba_score_num>{pba_score:.3f}</span>
+<span class=pba_score_label>pBA</span>
+</div>
+<div class=pba_max>Max potential (peak EV): <span>{pba_max_score:.3f}</span></div>
+<div class=pba_det><span>MLB-equivalent EV</span><span class=pba_det_val>{avg_ev} mph &rarr; {pba_scaled_avg:.0f} mph</span></div>
+<div class=pba_det><span>{ag} avg exit velo</span><span class=pba_det_val>{pba_l_avg} mph</span></div>
+<div class=pba_note>Unlike BA, pBA measures only what you control &mdash; exit velocity and contact quality. Shows expected hit rate if this contact quality were at MLB level.</div>
+</div>
+<div class=lava-sep><div class="lava-glow"></div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
 <div class="sec"><div class="st">Coach's Notes</div><div class="recs"><ol>{recs_list}</ol></div></div>
 <div class="ft">Earn It Academy · The Cage · Personal progress goals ({MONTHLY_IMPROVEMENT_PCT}% monthly) · {datetime.now().strftime('%b %d, %Y')}</div>
