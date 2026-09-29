@@ -17,6 +17,18 @@ LINUX2_DIR = "/home/chadlongworth/cage-schedule/"
 
 MONTHLY_IMPROVEMENT_PCT = 1.5  # 1.5% per month (middle of 1-2% range)
 
+# pBA (Protected Batting Average) configuration
+PBA_LEVEL_AVGS = {'8U': 37.6, '10U': 42.0, '12U': 65.3, '13U': 54.0, '14U': 83.0}
+PBA_MLB_REF = 89.0
+PBA_MLB_TABLE = {}
+for lo,hi,ba in [(120,124,1.000),(115,119,0.780),(110,114,0.726),(105,109,0.689),(100,104,0.561),(95,99,0.397),(90,94,0.276),(85,89,0.227),(80,84,0.221),(75,79,0.234),(70,74,0.263),(65,69,0.259),(60,64,0.192),(55,59,0.114),(50,54,0.126),(45,49,0.143),(40,44,0.245),(35,39,0.341),(30,34,0.450),(25,29,0.000)]:
+    for mph in range(lo,hi+1): PBA_MLB_TABLE[mph] = ba
+def pba_hit_value(mph):
+    mi = int(round(mph))
+    if mi > 124: return 1.000
+    if mi < 25: return 0.000
+    return PBA_MLB_TABLE.get(mi, 0.114)
+
 # ── Six-month comparison: avg of last 4 sessions vs avg of 4 sessions ~6 months ago ──
 six_month_now = {
     20752: (79.4, 70.4, 252.0),
@@ -156,6 +168,16 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
     barrel_pct = min(round(hard_pct * 0.2 + 2, 1), 10)
     
     b_val, a_val, e_val = bench["below"], bench["avg"], bench["elite"]
+    
+    # pBA (Projected Batting Average) 
+    pba_level = ag if ag in PBA_LEVEL_AVGS else '8U'
+    pba_l_avg = PBA_LEVEL_AVGS.get(pba_level, 37.6)
+    pba_scaled_avg = avg_ev * (PBA_MLB_REF / pba_l_avg)
+    pba_scaled_peak = peak_ev * (PBA_MLB_REF / pba_l_avg)
+    pba_score = pba_hit_value(pba_scaled_avg)
+    pba_max_score = pba_hit_value(pba_scaled_peak)
+    
+    
     
     # ── Monthly improvement goals (1.5% per month) ──
     monthly_factor = 1.0 + (MONTHLY_IMPROVEMENT_PCT / 100.0)
@@ -334,6 +356,7 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 {progress_card}
 {sixmo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
+<div class="pba-card"><div class="pba-icon">&#x1F3AF;</div><div class="pba-main">Protected Batting Average (pBA)</div><div class="pba-row"><span class="pba-lbl">pBA (avg contact)</span><span class="pba-val">{pba_score:.3f}</span></div><div class="pba-row pba-sub"><span class="pba-lbl">Max potential (peak EV)</span><span class="pba-val">{pba_max_score:.3f}</span></div><div class="pba-row pba-sub"><span class="pba-lbl">Avg EV to MLB-equivalent</span><span class="pba-val">{avg_ev} mph &rarr; {pba_scaled_avg:.0f} mph</span></div><div class="pba-row pba-sub"><span class="pba-lbl">{ag} level avg exit velo</span><span class="pba-val">{pba_l_avg} mph</span></div><div class="pba-desc">Unlike regular batting average (which depends on fielders and luck), pBA measures only what you control - exit velocity and contact quality. It shows the expected hit rate if this contact quality were transferred to the MLB level.</div></div>
 <div class="lava-sep"><div class="lava-glow"></div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
 <div class="sec"><div class="st">Coach's Notes</div><div class="recs"><ol>{recs_list}</ol></div></div>
