@@ -5,8 +5,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import base64, csv, io, os, sys
 
-DATA = '/home/chadlongworth/cage-schedule/monthly_data.csv'
-BASE = '/home/chadlongworth/cage-schedule'
+DATA = '/Users/cl/.openclaw/workspace/earn-it-hitting-reports/monthly_data.csv'
+BASE = '/Users/cl/.openclaw/workspace/earn-it-hitting-reports'
 
 # uid -> (slug, display name)
 ROSTER = {
