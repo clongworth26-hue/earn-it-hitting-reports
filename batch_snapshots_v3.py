@@ -350,22 +350,30 @@ for uid, fn, ln, cage_age, sess, peak_ms, avg_ms, la, max_dist_m, top_dist_m, hi
 .lava-sep{{position:relative;height:8px;margin:0 12px 8px;overflow:visible;}}
 .lava-glow{{position:absolute;top:-22px;left:-20%;right:-20%;height:60px;border-radius:50%;background:radial-gradient(ellipse at 50% 100%,rgba(255,70,0,0.10) 0%,rgba(255,150,0,0.05) 30%,rgba(255,70,0,0.02) 60%,transparent 80%);animation:lavaPulse 4s ease-in-out infinite;pointer-events:none;}}
 @keyframes lavaPulse{{0%,100%{{opacity:0.3;transform:scaleY(0.8);}}50%{{opacity:0.8;transform:scaleY(1.2);}}}}
+.pba_card{{background:{CARD};border-radius:12px;padding:14px 16px;border:1px solid {MG};text-align:center;margin-bottom:10px;}}
+.pba_icon{{font-size:24px;margin-bottom:2px;}}
+.pba_score{{font-size:34px;font-weight:700;letter-spacing:-.5px;}}
+.pba_label{{font-size:9px;color:{M};text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;}}
+.pba_divider{{height:1px;background:{LG};margin:4px 24px 6px;opacity:0.3;}}
+.pba_detail{{font-size:11px;color:{M};line-height:1.6;}}
+.pba_detail strong{{color:{W};}}
+.pba_note{{font-size:8px;color:{M};opacity:0.4;margin-top:4px;line-height:1.4;}}
 </style></head><body>
 <div class="hdr"><div class="l"><img src="{cage_b64}" alt="The Cage"><img src="{logo_b64}" alt="Earn It Academy"></div><h1>Hitting Snapshot</h1><div class="sub">Earn It Academy · The Cage</div></div>
 <div class="pn"><h2>{display_name}</h2><div class="dt">{cage_age} years old · {ag} · Last: {last_sesh}</div><div class="bd">{sess} sessions · {hits} batted balls</div></div>
 {progress_card}
 {sixmo_card}
 <div class="sec"><div class="st">Batted Ball Metrics</div><div class="mg">{mcards}</div></div>
-<div class=pba_card>
-<div class=pba_icon>&#x1F3AF;</div>
-<div class=pba_score>
-<span class=pba_score_num>{pba_score:.3f}</span>
-<span class=pba_score_label>pBA</span>
-</div>
-<div class=pba_max>Max potential (peak EV): <span>{pba_max_score:.3f}</span></div>
-<div class=pba_det><span>MLB-equivalent EV</span><span class=pba_det_val>{avg_ev} mph &rarr; {pba_scaled_avg:.0f} mph</span></div>
-<div class=pba_det><span>{ag} avg exit velo</span><span class=pba_det_val>{pba_l_avg} mph</span></div>
-<div class=pba_note>Unlike BA, pBA measures only what you control &mdash; exit velocity and contact quality. Shows expected hit rate if this contact quality were at MLB level.</div>
+<div class="pba_card">
+<div class="pba_icon">🏏</div>
+<div class="pba_score">{pba_score:.3f}</div>
+<div class="pba_label">Protected Batting Average</div>
+<div class="pba_divider"></div>
+<div class="pba_detail">Max potential (peak EV): <strong>{pba_max_score:.3f}</strong></div>
+<div class="pba_detail">Avg EV <strong>{avg_ev} mph</strong> → MLB-equiv: <strong>{pba_scaled_avg:.0f} mph</strong></div>
+<div class="pba_detail">{ag} avg exit velo: <strong>{pba_l_avg} mph</strong></div>
+<div class="pba_divider"></div>
+<div class="pba_note">Unlike BA, pBA measures only what you control — exit velocity and contact quality. Shows expected hit rate if this contact quality were at MLB level.</div>
 </div>
 <div class=lava-sep><div class="lava-glow"></div></div>
 <div class="sec"><div class="st">Benchmark Position ({ag})</div><div class="pct">{prows}</div></div>
