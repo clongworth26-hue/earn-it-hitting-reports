@@ -5,7 +5,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import base64, csv, io, os, sys
 
-DATA = '/tmp/earn-it-hitting-reports/monthly_data.csv'
+DATA = '/Users/cl/.openclaw/workspace/earn-it-hitting-reports/monthly_data.csv'
 BASE = '/Users/cl/.openclaw/workspace/earn-it-hitting-reports'
 
 # uid -> (slug, display name)
@@ -46,7 +46,7 @@ ROSTER = {
     41190: ('eliza_stewart', 'Eliza Stewart'),
     41197: ('arley_knapp', 'Arley Knapp'),
     41198: ('sutton_campbell', 'Sutton Campbell'),
-    41200: ('cooper_carlson', 'Cooper Carlson'),
+    41187: ('cooper_carlson', 'Cooper Carlson'),
 }
 
 BG = '#000008'; PLOT_BG = '#0d0d10'; TXT = '#aaaaaa'
