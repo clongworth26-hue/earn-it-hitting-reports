@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Virginia Bears 13U — Shipyard Pitching Plan (Oct 23–25)</title>
+<title>Virginia Bears 13U — Shipyard Pitching Plan V2 (Oct 23–25)</title>
 <style>
   :root{
     --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2b313d;
@@ -50,12 +50,14 @@
   .small{font-size:12.5px;color:var(--muted)}
   .flag{background:rgba(255,176,32,.08);border:1px solid rgba(255,176,32,.3);border-radius:10px;padding:14px;margin:12px 0}
   .flag b{color:var(--amber)}
+  .chg{background:rgba(180,124,255,.08);border:1px solid rgba(180,124,255,.3);border-radius:10px;padding:14px;margin:12px 0}
+  .chg b{color:var(--purple)}
   footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
   code{background:#000;padding:1px 6px;border-radius:5px;font-size:12.5px;color:var(--gold)}
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--muted)}
   @media print{
     body{background:#fff;color:#111;font-size:11.5pt}
-    .card,.rule,.script{background:#fff;border-color:#ccc}
+    .card,.rule,.script,.flag,.chg{background:#fff;border-color:#ccc}
     h2{border-left-color:#111} .kicker{color:#111}
     .pill{border-color:#999}
     a{color:#111}
@@ -66,11 +68,19 @@
 <div class="wrap">
 
 <header>
-  <div class="kicker">Virginia Bears 13U · Tournament Pitching Plan · V1</div>
+  <div class="kicker">Virginia Bears 13U · Tournament Pitching Plan · V2</div>
   <h1>Shipyard — October 23–25</h1>
-  <div class="sub">4 guaranteed games (Fri 1 · Sat 2 · Sun 1) + Sunday championship game if we win the opener.
-  Built to MLB Pitch Smart 13–14 limits and the tournament's daily cap.</div>
+  <div class="sub">4 games total: Friday 1 · Saturday 2 · Sunday 1 (one game Sunday — win and it's over).
+  Built to MLB Pitch Smart 13–14 limits and the tournament's 95-pitch daily cap.</div>
 </header>
+
+<div class="chg">
+  <b>V2 changes (Oct 20):</b> Sunday is a <b>single game</b>, not a doubleheader. The old Game 5 is gone.
+  With one fewer game, Saturday stops being a savings account — <b>all four top arms now get their second
+  outing locked in before Sunday</b>. Friday's budgets were cut (35/30/15/20 instead of 35/30/20/15) and
+  Saturday's workload redistributed so Eli picks up a short Saturday bridge instead of being held for a
+  Sunday start that no longer exists.
+</div>
 
 <h2>1. The Rules We're Playing By</h2>
 <div class="grid g2">
@@ -99,22 +109,22 @@
 </table>
 
 <div class="flag">
-  <b>The one number that drives everything:</b> on Saturday, <b>20 pitches keeps a kid alive for Sunday and 21 kills him.</b>
-  Friday is more forgiving — 35 keeps a kid alive for Sunday. Every plan below is built backwards from that.
+  <b>Two numbers drive everything:</b> on Saturday, <b>20 pitches keeps a kid alive for Sunday and 21 kills him.</b>
+  Friday is more forgiving — <b>35 keeps a kid alive for Sunday.</b> Everything below is built backwards from Sunday.
 </div>
 
-<h2>2. Staff &amp; Roles</h2>
+<h2>2. Staff &amp; Roles (V2)</h2>
 <table>
   <thead><tr><th>#</th><th>Pitcher</th><th>Role this weekend</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr></thead>
   <tbody>
-    <tr><td class="num">1</td><td><b>Marsh</b></td><td>Ace — Friday opener, Sunday game 1</td><td><span class="pill p-info">35</span></td><td>—</td><td><span class="pill p-info">95 max</span></td></tr>
-    <tr><td class="num">2</td><td><b>Eli</b></td><td>Strike-thrower — short Friday, Saturday bridge, Sunday finisher</td><td><span class="pill p-ok">20</span></td><td><span class="pill p-ok">20</span></td><td><span class="pill p-info">55 max</span></td></tr>
-    <tr><td class="num">3</td><td><b>Colton</b></td><td>Friday bulk, Sunday game 1 backup / game 2 starter</td><td><span class="pill p-warn">30</span></td><td>—</td><td><span class="pill p-info">65 max</span></td></tr>
-    <tr><td class="num">4</td><td><b>Jase</b></td><td>Saturday closer, Sunday swing arm</td><td>—</td><td><span class="pill p-ok">20</span></td><td><span class="pill p-info">75 max</span></td></tr>
-    <tr><td class="num">5</td><td><b>Ro</b></td><td>Saturday game 2 starter</td><td>—</td><td><span class="pill p-dead">70</span></td><td><span class="pill p-dead">out</span></td></tr>
-    <tr><td class="num">6</td><td><b>Peyton</b></td><td>Saturday game 3 starter</td><td>—</td><td><span class="pill p-dead">75</span></td><td><span class="pill p-dead">out</span></td></tr>
-    <tr><td class="num">7</td><td><b>Ray</b></td><td>Saturday relief, Sunday emergency</td><td>—</td><td><span class="pill p-ok">20</span></td><td><span class="pill p-info">55 max</span></td></tr>
-    <tr><td class="num">8</td><td><b>Aymes</b></td><td>Friday bridge — stays live all weekend</td><td><span class="pill p-ok">15</span></td><td>—</td><td><span class="pill p-info">75 max</span></td></tr>
+    <tr><td class="num">1</td><td><b>Marsh</b></td><td>Ace — Friday opener and <b>Sunday starter</b></td><td><span class="pill p-info">35</span></td><td>—</td><td><span class="pill p-info">65</span></td></tr>
+    <tr><td class="num">2</td><td><b>Eli</b></td><td>Strike-thrower — Friday short, <b>Saturday bridge</b>, Sunday emergency</td><td><span class="pill p-ok">15</span></td><td><span class="pill p-ok">15</span></td><td><span class="pill p-info">emerg.</span></td></tr>
+    <tr><td class="num">3</td><td><b>Colton</b></td><td>Friday bulk, <b>Sunday bridge</b></td><td><span class="pill p-warn">30</span></td><td>—</td><td><span class="pill p-info">25</span></td></tr>
+    <tr><td class="num">4</td><td><b>Jase</b></td><td>Saturday setup, <b>Sunday closer</b></td><td>—</td><td><span class="pill p-ok">15</span></td><td><span class="pill p-info">10</span></td></tr>
+    <tr><td class="num">5</td><td><b>Ro</b></td><td>Saturday Game 2 starter — spent Saturday</td><td>—</td><td><span class="pill p-dead">65</span></td><td><span class="pill p-dead">out</span></td></tr>
+    <tr><td class="num">6</td><td><b>Peyton</b></td><td>Saturday Game 3 starter — spent Saturday</td><td>—</td><td><span class="pill p-dead">70</span></td><td><span class="pill p-dead">out</span></td></tr>
+    <tr><td class="num">7</td><td><b>Ray</b></td><td>Saturday relief, bulk behind Ro</td><td>—</td><td><span class="pill p-dead">35</span></td><td><span class="pill p-dead">out</span></td></tr>
+    <tr><td class="num">8</td><td><b>Aymes</b></td><td>Friday bridge — fresh all weekend, Sunday emergency</td><td><span class="pill p-ok">20</span></td><td>—</td><td><span class="pill p-info">emerg.</span></td></tr>
   </tbody>
 </table>
 <div class="legend">
@@ -133,8 +143,8 @@
   <div class="script">
     <b>Marsh 0–35</b> → <b>Colton 36–65</b> → <b>Eli 66–85</b> → <b>Aymes 86–100</b>
   </div>
-  <p class="small">Nothing here is about winning Friday at max effort. It's about getting through seven innings while
-  keeping <b>all four</b> of our best arms legally available for Sunday.</p>
+  <p class="small">Friday is not about winning at max effort. It's about getting through seven innings while keeping
+  Marsh and Colton legally available for Sunday, and Eli and Aymes on zero-day rest.</p>
 
   <h3>If it goes poorly</h3>
   <table>
@@ -147,10 +157,10 @@
           <td>Pull at <b>30</b>, use <b>Aymes</b> for 2 innings.</td>
           <td>None. Both still Sunday-legal.</td></tr>
       <tr><td>Game already out of hand by inning 4 (8+ down)</td>
-          <td>Finish with <b>Aymes + Ray</b>, both capped at 20.</td>
+          <td>Finish with <b>Aymes + Eli</b>, both capped at 20.</td>
           <td>None. Top four untouched.</td></tr>
       <tr><td>Extra innings</td>
-          <td><b>Aymes</b> up to 20, then <b>Ray</b> up to 20.</td>
+          <td><b>Aymes</b> up to 20, then <b>Eli</b> up to 20.</td>
           <td>Both stay 0-day rest.</td></tr>
       <tr><td>Marsh cruising, under 30 through 4</td>
           <td><b>Do not extend him past 35.</b> Bank the Sunday start.</td>
@@ -165,28 +175,32 @@
 <div class="card game sat">
   <div class="ghead">
     <div class="gtitle">Game 2 · Saturday AM</div>
-    <div class="gmeta">Plan A · Ro start, Ray relief</div>
+    <div class="gmeta">Plan A · Ro start, Ray bulk relief</div>
   </div>
   <div class="script">
-    <b>Ro 0–70</b> → <b>Ray 71–90</b> (if needed)
+    <b>Ro 0–65</b> → <b>Ray 66–100</b>
   </div>
-  <p class="small">Ro is our Saturday horse. We are willing to spend him — but the trigger point matters.</p>
+  <p class="small">Ro and Ray are our Saturday-only bullets. We are willing to spend them completely — but if Ro
+  implodes early, pulling him at 20 is a free Sunday arm.</p>
   <h3>If it goes poorly</h3>
   <table>
     <thead><tr><th>Situation</th><th>Move</th><th>Cost</th></tr></thead>
     <tbody>
       <tr><td>Ro gives up 3+ in the first two innings</td>
           <td>Pull at <b>≤20</b> and go to Ray.</td>
-          <td><b>None — Ro stays Sunday-legal.</b> This is the smart pull.</td></tr>
-      <tr><td>Ro is fine but pitch count climbing (60+ after 4)</td>
+          <td><b>None — Ro becomes Sunday-legal.</b> Best-case disaster.</td></tr>
+      <tr><td>Ro fine but climbing (55+ after 4)</td>
           <td>Let him finish the inning, then Ray.</td>
           <td>Ro done for weekend (expected).</td></tr>
-      <tr><td>Ray struggles too</td>
+      <tr><td>Ray gets hit too</td>
           <td><b>Aymes</b> up to 20 — no further.</td>
-          <td>Aymes stays Sunday-legal.</td></tr>
+          <td>Aymes stays 0-day rest, still Sunday-legal.</td></tr>
       <tr><td>Blowout either way</td>
-          <td>Throw <b>Aymes</b> and <b>Ray</b> only. Save Peyton and Jase entirely.</td>
+          <td>Throw <b>Aymes</b> and <b>Eli</b> only, 20 each. Save Peyton entirely.</td>
           <td>Peyton fresh for Game 3.</td></tr>
+      <tr><td>Extra innings</td>
+          <td><b>Aymes</b> to 20, then <b>Eli</b> to 20.</td>
+          <td>Both stay 0-day rest for Sunday.</td></tr>
     </tbody>
   </table>
 </div>
@@ -194,141 +208,120 @@
 <div class="card game sat">
   <div class="ghead">
     <div class="gtitle">Game 3 · Saturday PM</div>
-    <div class="gmeta">Plan A · Peyton start, Jase close</div>
+    <div class="gmeta">Plan A · Peyton start, Eli bridge, Jase close</div>
   </div>
   <div class="script">
-    <b>Peyton 0–75</b> → <b>Jase 76–95</b> (cap Jase at 20)
+    <b>Peyton 0–70</b> → <b>Eli 71–85</b> (hard cap 15) → <b>Jase 86–100</b> (hard cap 15)
   </div>
-  <p class="small">Jase's 20 here is deliberate — it's what makes him available Sunday. If we don't need him, even better.</p>
+  <p class="small">This is where V2 earns its keep. Eli and Jase both get a real Saturday outing <b>under 20 pitches</b>,
+  which locks in their second appearance and still leaves them legal for Sunday.</p>
   <h3>If it goes poorly</h3>
   <table>
     <thead><tr><th>Situation</th><th>Move</th><th>Cost</th></tr></thead>
     <tbody>
       <tr><td>Peyton chased early (≤20)</td>
-          <td>Pull at <b>≤20</b> — he stays Sunday-legal. Bring Jase.</td>
-          <td>None.</td></tr>
+          <td>Pull at <b>≤20</b> — he stays Sunday-legal. Bring Eli.</td>
+          <td>None. Bonus arm for Sunday.</td></tr>
       <tr><td>Peyton 21–35 and struggling</td>
-          <td>Pull now. He's done for the weekend but the damage is contained.</td>
+          <td>Pull now. Contained damage.</td>
           <td>Peyton lost for Sunday.</td></tr>
       <tr><td>Close game in the 6th/7th</td>
-          <td><b>Jase</b> for the last 2 innings, 20 max.</td>
-          <td>Jase still Sunday-legal.</td></tr>
-      <tr><td>Extra innings</td>
-          <td><b>Jase</b> to 20, then <b>Eli</b> to 20.</td>
-          <td>Both stay 0-day rest. Eli gets his second outing guaranteed.</td></tr>
+          <td><b>Jase</b> for the last 2 innings, <b>15 max</b>.</td>
+          <td>Jase stays Sunday-legal — 20 is the line.</td></tr>
+      <tr><td>Eli needed for length (Peyton out early)</td>
+          <td>Eli to <b>20 max</b>, then Jase. Do not go to 21.</td>
+          <td>Above 20 and Eli is done for Sunday.</td></tr>
       <tr><td>Blowout</td>
-          <td>Finish with <b>Eli</b> and <b>Aymes</b>, 20 each.</td>
+          <td>Finish with <b>Eli + Jase</b>, 15 each.</td>
           <td>Everyone stays live.</td></tr>
     </tbody>
   </table>
+  <div class="flag"><b>Watch the Eli/Jase counts like a hawk.</b> They are scheduled for 15. At 21 they become spectators on Sunday, and Sunday is a one-game season.</div>
 </div>
 
-<h2>5. Sunday — Game 4 (guaranteed)</h2>
+<h2>5. Sunday — Game 4 (the only Sunday game)</h2>
 <div class="card game sun">
   <div class="ghead">
     <div class="gtitle">Game 4 · Sunday</div>
-    <div class="gmeta">Plan A · Marsh, full go</div>
+    <div class="gmeta">Plan A · Marsh start, Colton bridge, Jase close</div>
   </div>
   <div class="script">
-    <b>Marsh 0–65</b> → <b>Colton 66–95</b> → <b>Jase</b> to close if the lead is tight
+    <b>Marsh 0–65</b> → <b>Colton 66–90</b> → <b>Jase 91–100</b>
   </div>
-  <p class="small">Marsh threw 35 Friday = one day of rest (Saturday). He's legal and this is the game we've been protecting him for.</p>
+  <p class="small">Marsh threw 35 Friday = one day of rest (Saturday). He's legal and this is the game we protected him for.
+  Colton threw 30 Friday, also legal. Jase threw 15 Saturday — zero-day rest, legal. Eli and Aymes are the emergency arms.</p>
   <h3>If it goes poorly</h3>
   <table>
     <thead><tr><th>Situation</th><th>Move</th><th>Cost</th></tr></thead>
     <tbody>
       <tr><td>Marsh hit hard early (2+ runs in first, 30+ pitches)</td>
-          <td><b>Colton</b> in immediately, 50-pitch budget.</td>
-          <td>Colton's Game 5 start is gone. Eli/Jase/Ray cover Game 5.</td></tr>
+          <td><b>Colton</b> in immediately — he has a full 65 available.</td>
+          <td>None. Nothing left to save.</td></tr>
       <tr><td>Marsh fine but at 65 with a lead</td>
-          <td><b>Colton</b> for 2, then <b>Jase</b> for the last 3 outs.</td>
-          <td>Preserves Marsh's arm, keeps Colton under 35.</td></tr>
+          <td><b>Colton</b> to the 6th, then <b>Jase</b> for the last 3 outs.</td>
+          <td>Preserves Marsh's arm for next season, not next game.</td></tr>
       <tr><td>Marsh at 65 and we're trailing</td>
           <td>Go to <b>Colton</b> anyway. Do not chase 95 in a lost game.</td>
-          <td>Protects Sunday Game 5 options.</td></tr>
+          <td>Arm protection. Season's over either way.</td></tr>
+      <tr><td>Colton gets shelled</td>
+          <td><b>Eli</b> (up to 65 available) then <b>Aymes</b> (up to 75).</td>
+          <td>Both fresh. Nothing held back.</td></tr>
       <tr><td>Extra innings</td>
-          <td><b>Jase</b> 20, then <b>Eli</b> 20, then <b>Ray</b> 20.</td>
-          <td>Three live arms, all legal.</td></tr>
+          <td><b>Jase</b> to 20, then <b>Eli</b>, then <b>Aymes</b>.</td>
+          <td>Three live arms. This is the last game of the weekend.</td></tr>
     </tbody>
   </table>
+  <div class="flag"><b>Sunday is single elimination.</b> There is no tomorrow to save anyone for. If the game is on the line,
+  the best available arm goes — the only hard line left is the 95 daily cap.</div>
 </div>
 
-<h2>6. Sunday — Game 5 (if we win Game 4)</h2>
-<div class="card game sun">
-  <div class="ghead">
-    <div class="gtitle">Game 5 · Sunday (championship)</div>
-    <div class="gmeta">Plan A · Eli + Colton, bullpen behind</div>
-  </div>
-  <div class="script">
-    <b>Eli 0–45</b> → <b>Colton 46–80</b> → <b>Jase 81–95</b> → <b>Ray</b> as emergency
-  </div>
-  <h3>If it goes poorly</h3>
-  <table>
-    <thead><tr><th>Situation</th><th>Move</th><th>Cost</th></tr></thead>
-    <tbody>
-      <tr><td>Eli struggles in the first</td>
-          <td><b>Colton</b> immediately — but only if he threw ≤50 in Game 4.</td>
-          <td>If Colton already threw 50+, go to <b>Jase</b> and then <b>Ray</b>.</td></tr>
-      <tr><td>Colton at 35 mid-game</td>
-          <td><b>Jase</b> for 2 innings.</td>
-          <td>Ray remains the last arm.</td></tr>
-      <tr><td>Deep into extras</td>
-          <td><b>Ray</b> up to his remaining daily allowance.</td>
-          <td>Everyone else is spent — this is the last bullet.</td></tr>
-      <tr><td>We're blown out</td>
-          <td><b>Ray + Aymes</b> finish. Protect nobody's rest — season's over.</td>
-          <td>—</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<h2>7. Rest &amp; Eligibility Ledger</h2>
+<h2>6. Rest &amp; Eligibility Ledger</h2>
 <p class="small">Every number below is checked against the Pitch Smart table. This is the audit — if a row is wrong, the plan is wrong.</p>
 <table>
   <thead>
     <tr><th>Pitcher</th><th>Fri</th><th>Rest owed</th><th>Sat</th><th>Rest owed</th><th>Sun status</th><th>Legal?</th></tr>
   </thead>
   <tbody>
-    <tr><td><b>Marsh</b></td><td class="num">35</td><td>1 day (Sat)</td><td>—</td><td>—</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
-    <tr><td><b>Eli</b></td><td class="num">20</td><td>0 days</td><td class="num">20</td><td>0 days</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
-    <tr><td><b>Colton</b></td><td class="num">30</td><td>1 day (Sat)</td><td>—</td><td>—</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
-    <tr><td><b>Jase</b></td><td>—</td><td>—</td><td class="num">20</td><td>0 days</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
-    <tr><td><b>Ro</b></td><td>—</td><td>—</td><td class="num">70</td><td>4 days</td><td><span class="pill p-dead">Out</span></td><td>✅</td></tr>
-    <tr><td><b>Peyton</b></td><td>—</td><td>—</td><td class="num">75</td><td>4 days</td><td><span class="pill p-dead">Out</span></td><td>✅</td></tr>
-    <tr><td><b>Ray</b></td><td>—</td><td>—</td><td class="num">20</td><td>0 days</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
-    <tr><td><b>Aymes</b></td><td class="num">15</td><td>0 days</td><td>—</td><td>—</td><td><span class="pill p-ok">Available</span></td><td>✅</td></tr>
+    <tr><td><b>Marsh</b></td><td class="num">35</td><td>1 day (Sat)</td><td>—</td><td>—</td><td><span class="pill p-ok">Starts G4 · 65</span></td><td>✅</td></tr>
+    <tr><td><b>Eli</b></td><td class="num">15</td><td>0 days</td><td class="num">15</td><td>0 days</td><td><span class="pill p-ok">Emergency</span></td><td>✅</td></tr>
+    <tr><td><b>Colton</b></td><td class="num">30</td><td>1 day (Sat)</td><td>—</td><td>—</td><td><span class="pill p-ok">Bridge · 25</span></td><td>✅</td></tr>
+    <tr><td><b>Jase</b></td><td>—</td><td>—</td><td class="num">15</td><td>0 days</td><td><span class="pill p-ok">Closes G4</span></td><td>✅</td></tr>
+    <tr><td><b>Ro</b></td><td>—</td><td>—</td><td class="num">65</td><td>3 days</td><td><span class="pill p-dead">Out</span></td><td>✅</td></tr>
+    <tr><td><b>Peyton</b></td><td>—</td><td>—</td><td class="num">70</td><td>4 days</td><td><span class="pill p-dead">Out</span></td><td>✅</td></tr>
+    <tr><td><b>Ray</b></td><td>—</td><td>—</td><td class="num">35</td><td>1 day</td><td><span class="pill p-dead">Out</span></td><td>✅</td></tr>
+    <tr><td><b>Aymes</b></td><td class="num">20</td><td>0 days</td><td>—</td><td>—</td><td><span class="pill p-ok">Emergency</span></td><td>✅</td></tr>
   </tbody>
 </table>
 
-<h2>8. Does This Hit the Ask?</h2>
+<h2>7. Does This Hit the Ask?</h2>
 <table>
   <thead><tr><th>Requirement</th><th>How the plan meets it</th><th>Status</th></tr></thead>
   <tbody>
     <tr><td>Top 4 used at least twice</td>
-        <td>Marsh Fri + Sun. Eli Fri + Sat. Colton Fri + Sun. Jase Sat + Sun.</td>
+        <td>Marsh Fri + Sun. Colton Fri + Sun. Eli Fri + Sat. Jase Sat + Sun. <b>All four locked in before Sunday starts.</b></td>
         <td><span class="pill p-ok">Guaranteed</span></td></tr>
     <tr><td>Stay under daily cap</td>
-        <td>Highest single-day load is Marsh at 95 on Sunday (if needed). Nobody else approaches it.</td>
+        <td>Highest single-day load is Peyton at 70. Nobody approaches 95 on the scheduled plan.</td>
         <td><span class="pill p-ok">Yes</span></td></tr>
     <tr><td>Pitch Smart rest compliance</td>
-        <td>Every prior outing is ≤35 Friday / ≤20 Saturday, so all Sunday arms carry 0–1 days rest.</td>
+        <td>Every Sunday arm threw ≤35 Friday or ≤15 Saturday, so all carry 0–1 days rest.</td>
         <td><span class="pill p-ok">Yes</span></td></tr>
     <tr><td>Main plan + contingencies</td>
-        <td>Five game cards, each with a named starter and four or more failure branches.</td>
+        <td>Four game cards, each with a named starter and four or more named failure branches.</td>
         <td><span class="pill p-ok">Yes</span></td></tr>
-    <tr><td>Sunday doubleheader</td>
-        <td>Game 5 uses Eli → Colton → Jase → Ray, all rest-legal.</td>
+    <tr><td>One Sunday game</td>
+        <td>Plan is built for a single Sunday game. No pitcher is held back for a second Sunday game.</td>
         <td><span class="pill p-ok">Yes</span></td></tr>
   </tbody>
 </table>
 
 <div class="flag">
-  <b>Why the top four get two outings even if we lose Sunday:</b> Sunday Game 4 is guaranteed, and all four are legal for it.
-  Marsh and Colton come off Friday (1 day rest), Jase off Saturday (0 days), Eli off Friday and Saturday (0 days).
-  We never need a Game 5 for the requirement to hold.
+  <b>The V2 structural win:</b> because there's no second Sunday game, Eli and Jase can both throw short stints Saturday.
+  That means the top-four requirement is satisfied on <b>Saturday night</b>, regardless of what Sunday does.
+  V1 needed a Sunday Game 5 to close that loop — this version doesn't.
 </div>
 
-<h2>9. Before First Pitch — Confirm With the Tournament</h2>
+<h2>8. Before First Pitch — Confirm With the Tournament</h2>
 <div class="card">
   <ul>
     <li><b>Tournament daily cap.</b> Assumed 95, matching Pitch Smart 13–14. Some events use 85 or a per-day team total.</li>
@@ -336,26 +329,26 @@
     <li><b>Re-entry rule.</b> Can a pitcher return to the mound in the same day after being removed? Plan assumes no.</li>
     <li><b>Weekly/event total.</b> Pitch Smart doesn't cap a tournament total; some events do.</li>
     <li><b>Saturday game times.</b> Back-to-back games change warm-up and who's available in relief.</li>
+    <li><b>Sunday format.</b> Confirmed single game — if a second Sunday game appears, this plan needs a re-cut.</li>
   </ul>
 </div>
 
-<h2>10. Coach's Card (print this)</h2>
+<h2>9. Coach's Card (print this)</h2>
 <div class="card">
   <table>
     <thead><tr><th>Slot</th><th>Starter</th><th>Hard stop</th><th>Next man</th></tr></thead>
     <tbody>
       <tr><td>Fri G1</td><td>Marsh</td><td class="num">35</td><td>Colton → Eli → Aymes</td></tr>
-      <tr><td>Sat G2</td><td>Ro</td><td class="num">70</td><td>Ray</td></tr>
-      <tr><td>Sat G3</td><td>Peyton</td><td class="num">75</td><td>Jase (20 cap)</td></tr>
-      <tr><td>Sun G4</td><td>Marsh</td><td class="num">65*</td><td>Colton</td></tr>
-      <tr><td>Sun G5</td><td>Eli</td><td class="num">45</td><td>Colton → Jase → Ray</td></tr>
+      <tr><td>Sat G2</td><td>Ro</td><td class="num">65</td><td>Ray</td></tr>
+      <tr><td>Sat G3</td><td>Peyton</td><td class="num">70</td><td>Eli (15) → Jase (15)</td></tr>
+      <tr><td>Sun G4</td><td>Marsh</td><td class="num">65</td><td>Colton → Jase</td></tr>
     </tbody>
   </table>
-  <p class="small">*Marsh may go to 95 if the game demands it — but only with the lead. Trailing, hand it to Colton.</p>
+  <p class="small"><b>Non-negotiable:</b> Eli and Jase stay under 20 Saturday so they're legal Sunday. Marsh and Colton stay under 36 Friday.</p>
 </div>
 
 <footer>
-  Virginia Bears 13U · Shipyard Tournament · Oct 23–25 · Plan V1 rough draft<br>
+  Virginia Bears 13U · Shipyard Tournament · Oct 23–25 · Plan <b>V2</b> (Sunday reduced to one game)<br>
   Built to MLB Pitch Smart 13–14 guidelines. Verify tournament-specific rules before first pitch.
 </footer>
 
