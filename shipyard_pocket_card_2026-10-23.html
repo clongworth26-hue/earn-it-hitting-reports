@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipyard Pocket Card — Virginia Bears 13U</title>
+<style>
+  @page { size: letter portrait; margin: 0.25in; }
+
+  :root{
+    --ink:#000; --line:#888; --soft:#efefef;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+
+  .screenbar{background:#111;color:#fff;padding:10px 16px;font-size:13px;line-height:1.45}
+  .screenbar b{color:#ffc451}
+  .screenbar a{color:#7cc4ff}
+
+  .sheet{
+    width:8.0in; height:10.4in; margin:0 auto; display:grid;
+    grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  }
+  .panel{
+    border:1px dashed var(--line); padding:8px 9px; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .ptag{
+    font-size:8.5px; letter-spacing:.16em; text-transform:uppercase;
+    font-weight:800; color:#444; border-bottom:1.5px solid #000;
+    padding-bottom:2px; margin-bottom:5px; display:flex; justify-content:space-between;
+  }
+  .game{margin-bottom:9px}
+  .gline{display:flex; align-items:baseline; justify-content:space-between; gap:6px}
+  .gname{font-size:12.5px; font-weight:900; letter-spacing:.02em}
+  .gsub{font-size:8px; color:#555; font-weight:700; text-transform:uppercase; letter-spacing:.06em}
+  .chain{
+    font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12.5px; font-weight:700; line-height:1.5; margin-top:3px;
+  }
+  .chain .p{font-size:14px; font-weight:900}
+  .cap{font-size:9px; color:#333; font-style:italic; margin-top:2px}
+
+  .hdr{font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.08em;
+       border-bottom:1.5px solid #000; padding-bottom:2px; margin:0 0 5px 0}
+  .tiers{width:100%; border-collapse:collapse; font-size:9.5px}
+  .tiers td{padding:2px 3px; border-bottom:1px solid #ddd}
+  .tiers td:first-child{font-family:ui-monospace,Menlo,monospace; font-weight:800; width:38%}
+  .tiers td:last-child{font-weight:800; text-align:right}
+
+  ul{margin:2px 0 0 13px; padding:0}
+  li{font-size:9.5px; line-height:1.35; margin:2.5px 0}
+  li b{font-weight:900}
+
+  .rule{background:var(--soft); border-left:3px solid #000; padding:5px 6px; margin:5px 0; font-size:9.5px; line-height:1.35}
+  .rule b{font-weight:900}
+  .stop{background:#000; color:#fff; padding:5px 6px; font-size:9.5px; font-weight:800; line-height:1.3; margin-top:auto}
+  .tiny{font-size:7.5px; color:#555; margin-top:3px; line-height:1.3}
+
+  .foldnote{text-align:center; font-size:9px; color:#666; padding:6px 0 0}
+
+  @media screen{
+    body{background:#e9ecef; padding:0 0 40px}
+    .sheet{background:#fff; box-shadow:0 2px 14px rgba(0,0,0,.18); margin-top:14px}
+    .panel{border-color:#bbb}
+  }
+  @media print{
+    body{background:#fff}
+    .screenbar,.foldnote{display:none}
+    .sheet{width:auto; height:auto; box-shadow:none; margin:0;
+           height:10.5in; page-break-after:avoid}
+    .panel{border:1px dashed #bbb}
+  }
+</style>
+</head>
+<body>
+
+<div class="screenbar">
+  <b>PRINT:</b> Letter, portrait, 100% scale (no "fit to page"), margins none/default.
+  Print on <b>cardstock</b> if you can. Fold in half top-to-bottom, then in half left-to-right → 4 pocket panels.
+  &nbsp;·&nbsp; Full plan: <a href="shipyard_pitching_plan_2026-10-23.html">V3 dashboard</a>
+</div>
+
+<div class="sheet">
+
+  <!-- ============ PANEL 1: FRIDAY + SAT G2 ============ -->
+  <div class="panel">
+    <div class="ptag"><span>SHIPYARD · OCT 23–25</span><span>1 / 4</span></div>
+
+    <div class="game">
+      <div class="gline"><span class="gname">FRI · GAME 1</span><span class="gsub">100 pitches</span></div>
+      <div class="chain">
+        <span class="p">Marsh</span> 0–35 → <span class="p">Colton</span> 36–65<br>
+        → <span class="p">Eli</span> 66–85 → <span class="p">Aymes</span> 86–100
+      </div>
+      <div class="cap">Nobody chases a win past his cap.</div>
+    </div>
+
+    <div class="game">
+      <div class="gline"><span class="gname">SAT AM · GAME 2</span><span class="gsub">100 pitches</span></div>
+      <div class="chain">
+        <span class="p">Ro</span> 0–65 → <span class="p">Ray</span> 66–100
+      </div>
+      <div class="cap">Saturday-only bullets. Spend them.</div>
+    </div>
+
+    <div class="rule">
+      <b>Ro implodes early?</b> Pull at <b>≤20</b> → he becomes a FREE Sunday arm.
+    </div>
+
+    <div class="rule">
+      <b>Marsh laboring?</b> (25+ in an inning, or 3 runs thru 2)<br>
+      Pull at <b>≤35</b>, Colton in. Still Sunday-legal.
+    </div>
+
+    <div class="stop">HARD STOP: 36 on Friday = DONE for the weekend.</div>
+  </div>
+
+  <!-- ============ PANEL 2: SAT G3 + SUNDAY ============ -->
+  <div class="panel">
+    <div class="ptag"><span>SHIPYARD · OCT 23–25</span><span>2 / 4</span></div>
+
+    <div class="game">
+      <div class="gline"><span class="gname">SAT PM · GAME 3</span><span class="gsub">100 pitches</span></div>
+      <div class="chain">
+        <span class="p">Peyton</span> 0–65 → <span class="p">Jase</span> 66–85<br>
+        → <span class="p">Eli</span> 86–100
+      </div>
+      <div class="cap"><b>Jase cap 20 · Eli cap 15.</b> Finish the batter rule does NOT let you cross 20.</div>
+    </div>
+
+    <div class="game">
+      <div class="gline"><span class="gname">SUN · GAME 4</span><span class="gsub">ONE GAME ONLY</span></div>
+      <div class="chain">
+        <span class="p">Marsh</span> 0–50 → <span class="p">Colton</span> 51–75<br>
+        → <span class="p">Jase</span> 76–100
+      </div>
+      <div class="cap">Single elimination. Close game = long leash, 95 is the only line.</div>
+    </div>
+
+    <div class="rule">
+      <b>Emergency arm Sunday = AYMES only.</b><br>
+      Eli is <b>NOT available</b> (Thu/Fri/Sat would be 3 days — he's Fri+Sat).
+    </div>
+
+    <div class="stop">SUNDAY: nobody else is legal. Ro · Peyton · Ray are spent.</div>
+  </div>
+
+  <!-- ============ PANEL 3: RULES + NON-NEGOTIABLES ============ -->
+  <div class="panel">
+    <div class="ptag"><span>RULES</span><span>3 / 4</span></div>
+
+    <div class="hdr">Rest tiers (13–14)</div>
+    <table class="tiers">
+      <tr><td>1–20</td><td>0 days — next day OK</td></tr>
+      <tr><td>21–35</td><td>1 day</td></tr>
+      <tr><td>36–50</td><td>2 days</td></tr>
+      <tr><td>51–65</td><td>3 days</td></tr>
+      <tr><td>66+</td><td>4 days</td></tr>
+    </table>
+
+    <div class="rule" style="margin-top:7px">
+      <b>THE ONLY NUMBER THAT MATTERS SATURDAY:</b><br>
+      <b>20</b> keeps him for Sunday · <b>21</b> kills him.
+    </div>
+
+    <div class="hdr" style="margin-top:7px">Non-negotiables</div>
+    <ul>
+      <li>Marsh <b>&amp; Colton under 36</b> Friday</li>
+      <li>Eli <b>&amp; Jase under 21</b> Saturday</li>
+      <li><b>Eli never pitches Sunday</b></li>
+      <li><b>Aymes never pitches Saturday</b></li>
+      <li>Nobody throws <b>3 days</b>. Period.</li>
+      <li>Daily max <b>95</b> — hard cap, no exceptions</li>
+    </ul>
+
+    <div class="tiny">Three-day rule is OUR rule, not Pitch Smart's. Decide any override before the dugout, not during.</div>
+  </div>
+
+  <!-- ============ PANEL 4: BLOWOUTS ============ -->
+  <div class="panel">
+    <div class="ptag"><span>BLOWOUT PROTOCOL</span><span>4 / 4</span></div>
+
+    <div class="hdr">We are UP big — 8+ after 4, or 10+ anytime</div>
+    <ul>
+      <li>Starters come out <b>at their cap, not a pitch over</b></li>
+      <li><b>Aymes + Ray</b> eat every remaining inning</li>
+      <li><b>Marsh · Eli · Colton · Jase stop.</b> Sunday is the asset</li>
+      <li>Sat G2 blowout → <b>Peyton never warms</b> = free fresh starter</li>
+      <li>Sun blowout → <b>Aymes finishes, Jase never throws</b></li>
+    </ul>
+
+    <div class="hdr" style="margin-top:7px">They are UP big — 8+ after 4, or 10+ anytime</div>
+    <ul>
+      <li>Pull the starter at <b>≤20</b> if he's near it → free Sunday arm</li>
+      <li><b>Aymes + Ray finish it.</b> Low-end guys get the work</li>
+      <li><b>Do NOT pitch Jase or Eli</b> in a lost Saturday game</li>
+      <li>Keep every low-end stint <b>≤20</b> so he stays flexible</li>
+      <li>Never chase 95 in a lost game</li>
+    </ul>
+
+    <div class="stop">A blowout is the ONLY time the bottom of the staff gets real innings. Use it.</div>
+  </div>
+
+</div>
+
+<div class="foldnote">
+  Fold: top-to-bottom, then left-to-right · Panels 1–2 = game cards · Panel 3 = rules · Panel 4 = blowouts
+</div>
+
+</body>
+</html>
